@@ -17,10 +17,12 @@ coins = {}
 for div in divs:
     link_block = div.find_next('a', {"data-bn-type": "link"})
     name_block = link_block.find_next('div', {"class": "body3 line-clamp-1 truncate text-t-third css-vurnku"})
+    price_block = div.find_next('div', {"class": "body2 items-center css-18yakpx"})
 
     link = link_block.get('href')
     name = name_block.text
+    price = price_block.text
 
-    coins[name] = "https://www.binance.com" + link
+    coins[name] = (price, "https://www.binance.com" + link)
 
 pprint(coins)
